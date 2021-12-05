@@ -31792,7 +31792,10 @@ function LoginView(props) {
   })), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"));
+  }, "Submit"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit",
+    onClick: handleSubmit
+  }, "Register Here"));
 }
 },{"react":"../node_modules/react/index.js"}],"../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.13.1
@@ -32823,7 +32826,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
           return onMovieClick(movie);
         },
         className: "movie-card"
-      }, movie.Title);
+      }, movie.Name);
     }
   }]);
 
@@ -32833,7 +32836,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
 exports.MovieCard = MovieCard;
 MovieCard.propTypes = {
   movie: _propTypes.default.shape({
-    Title: _propTypes.default.string.isRequired,
+    Name: _propTypes.default.string.isRequired,
     Director: _propTypes.default.string.isRequired,
     Actors: _propTypes.default.string.isRequired,
     Genre: _propTypes.default.string.isRequired,
@@ -33218,7 +33221,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58168" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60474" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
