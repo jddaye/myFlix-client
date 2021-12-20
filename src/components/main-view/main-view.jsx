@@ -7,6 +7,7 @@ import {MovieCard} from '../movie-card/movie-card';
 import {MovieView} from '../movie-view/movie-view';
 
 import Row from 'react-bootstrap/Row';
+import { Container, Col } from 'react-bootstrap';
 
 export class MainView extends React.Component {
 
