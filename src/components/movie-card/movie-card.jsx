@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+//SCSS import
+import "./movie-card.scss";
+
 export class MovieCard extends React.Component {
     render() {
         const {movie, onMovieClick} = this.props;
