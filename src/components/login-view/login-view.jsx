@@ -21,7 +21,7 @@ export function LoginView(props) {
             <Row>
                 <Col>
                     <CardGroup>
-                        <Card>
+                        <Card style={{marginTop: 150, marginBottom: 50 }}>
                             <Card.Title>Please Login</Card.Title>
                             <Card.Body>
                                 <Form>
@@ -58,6 +58,5 @@ export function LoginView(props) {
                 </Col>
             </Row>
         </Container>
-        
     )
 }
