@@ -51310,13 +51310,13 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Director: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Directors)), /*#__PURE__*/_react.default.createElement("div", {
+      }, movie.Director.Name)), /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-actors"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
       }, "Actors: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Actors)), /*#__PURE__*/_react.default.createElement("button", {
+      }, movie.Actors.join(", "))), /*#__PURE__*/_react.default.createElement("button", {
         onClick: function onClick() {
           onBackClick(null);
         }
@@ -51566,7 +51566,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58488" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52634" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

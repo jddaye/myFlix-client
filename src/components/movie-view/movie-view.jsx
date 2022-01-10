@@ -29,12 +29,12 @@ export class MovieView extends React.Component {
 
                 <div className="movie-director">
                     <span className="label">Director: </span>
-                    <span className="value">{movie.Directors}</span>
+                    <span className="value">{movie.Director.Name}</span>
                 </div>
 
                 <div className="movie-actors">
                     <span className="label">Actors: </span>
-                    <span className="value">{movie.Actors}</span>
+                    <span className="value">{movie.Actors.join(", ")}</span>
                 </div>
                 
 
