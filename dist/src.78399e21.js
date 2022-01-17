@@ -51298,7 +51298,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Genre: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Genre.Name)), /*#__PURE__*/_react.default.createElement("div", {
+      }, movie.Genre)), /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-description"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
