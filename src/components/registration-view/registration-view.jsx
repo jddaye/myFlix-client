@@ -1,21 +1,38 @@
 import React, {useState} from 'react';
 import {Form, Button, Card, CardGroup, Container, Col, Row} from 'react-bootstrap';
 
+import axios from 'axios';
+
 //import SCSS
 import "./registration-view.scss"
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 export function RegistrationView(props) {
     const [ username, setUsername ] = useState('');
-    const [ password, setPassword ] = usePassword('');
-    const [ birthday, setBirthday ] = useBirthday('');
-    const [ email, setEmail ] = useEmail('');
+    const [ password, setPassword ] = useState('');
+    const [ birthday, setBirthday ] = useState('');
+    const [ email, setEmail ] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username, password, birthday, email);
+        axios.post('myflyx.herokuapp.com/users', {
+            Username: username,
+            Password: password, 
+            Birthday: birthday,
+            Email: email,
+        })
+        .then(response => {
+            const data = response.data;
+            console.log(data);
+            alert('Registration successful');
+            window.open('/', '_self');
+        })
+        .catch(e => {
+            console.log('error registering the user')
+        });
 
-        props.onLoggedIn(username);
     };
+
     return (
         <Container>
             <Row>
@@ -72,3 +89,14 @@ export function RegistrationView(props) {
         
     )
 }
+
+RegistrationView.propTypes= {
+    registration: propTypes.shape({
+        Username: propTypes.string.isRequired,
+        Password: propTypes.string.isRequired,
+        Email: propTypes.string.isRequired,
+        Birthday: propTypes.string,
+    }),
+
+    onRegistration: propTypes.func,
+};
