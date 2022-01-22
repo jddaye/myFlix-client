@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button, Card, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { setUser, updateUser } from '../../actions/actions';
-import { connect } from 'react-redux';
 
 import "./profile-view.scss";
 
@@ -37,8 +35,8 @@ export class ProfileView extends React.Component {
     getUser = (token) => {
         const username = localStorage.getItem("user");
         axios
-            .get(`https://myflyx.herokuapp.com/users/${username}`, {
-                headers: { Authorization: `Bearer ${token}` },
+            .get('https://myflyx.herokuapp.com/users/${username}', {
+                headers: { Authorization: 'Bearer ${token}' },
             })
             .then((response) => {
                 this.setState({
@@ -61,7 +59,7 @@ export class ProfileView extends React.Component {
         const username = localStorage.getItem("user");
         const token = localStorage.getItem("token");
 
-        axios.put(`https://myflyx.herokuapp.com/users/${username}`,
+        axios.put('https://myflyx.herokuapp.com/users/${username}',
             {
                 Username: this.state.Username,
                 Password: this.state.Password,
@@ -69,7 +67,7 @@ export class ProfileView extends React.Component {
                 Birthday: this.state.Birthday,
             },
             {
-                headers: { Authorization: `Bearer ${token}` },
+                headers: { Authorization: 'Bearer ${token}' },
             })
             .then((response) => {
                 this.setState({
@@ -84,7 +82,7 @@ export class ProfileView extends React.Component {
                 console.log(data);
                 console.log(this.state.Username);
                 alert("Profile is updated!");
-                window.open(`/users/${username}`, "_self");
+                window.open('/users/${username}', "_self");
             })
             .catch(function (error) {
                 console.log(error);
@@ -97,8 +95,8 @@ export class ProfileView extends React.Component {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
-        axios.delete(`https://myflyx.herokuapp.com/users/${username}/movies/${movie._id}`, {
-            headers: { Authorization: `Bearer ${token}` }
+        axios.delete('https://myflyx.herokuapp.com/users/${username}/movies/${movie._id}', {
+            headers: { Authorization: 'Bearer ${token}' }
         })
             .then((response) => {
                 console.log(response);
@@ -115,15 +113,15 @@ export class ProfileView extends React.Component {
         const username = localStorage.getItem("user");
         const token = localStorage.getItem("token");
 
-        axios.delete(`https://myflyx.herokuapp.com/user/${username}`, {
-            headers: { Authorization: `Bearer ${token}` },
+        axios.delete('https://myflyx.herokuapp.com/user/${username}', {
+            headers: { Authorization: 'Bearer ${token}' },
         })
             .then((response) => {
                 console.log(response);
                 alert("Profile deleted");
                 localStorage.removeItem("user");
                 localStorage.removeItem("token");
-                window.open(`/`, "_self");
+                window.open('/', "_self");
             })
             .catch(function (error) {
                 console.log(error);

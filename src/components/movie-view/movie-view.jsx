@@ -1,6 +1,57 @@
 import React from 'react';
+import propTypes from 'prop+types';
+
+import axios from 'axios';
+
+import { Link } from 'react-router-dom';
+
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+    }
+
+    addFavoriteMovie() {
+        const token = localStorage.getItem('token');
+        const username = localStorage.getItem('user');
+
+        axios.post('https://myflyx.herokuapp.com/users/${username}/movies/${this.props.movie._id}', {}, {
+            headers: { Authorization: 'Bearer ${token}' },
+            method: 'POST'
+        })
+            .then(response => {
+                alert('Added to Favorites List')
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
+    keypressCallback(event) {
+        console.log(event.key);
+    }
+
+    componentDidMount() {
+        document.addEventListener('keypress', this.keypressCallback);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keypress', this.keypressCallback);
+    }
+
+    onLoggedOut() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.setState({
+            user: null,
+        });
+        window.open('/', '_self');
+    }
+
+
     
     render () {
         const {movie, onBackClick} = this.props;
@@ -44,8 +95,6 @@ export class MovieView extends React.Component {
                     <span className="label">Actors: </span>
                     <span className="value">{movie.Actors.join(", ")}</span>
                 </div>
-                
-
 
                 <button onClick={() => {onBackClick(null); }}>Back</button>
             </div>

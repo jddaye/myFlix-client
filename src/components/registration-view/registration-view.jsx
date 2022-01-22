@@ -5,7 +5,7 @@ import axios from 'axios';
 
 //import SCSS
 import "./registration-view.scss"
-import { propTypes } from 'react-bootstrap/esm/Image';
+import { propTypes } from 'prop-types';
 
 export function RegistrationView(props) {
     const [ username, setUsername ] = useState('');

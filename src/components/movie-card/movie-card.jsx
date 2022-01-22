@@ -12,6 +12,15 @@ export class MovieCard extends React.Component {
     render() {
         const {movie} = this.props;
 
+        onLoggedOut() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            this.setState({
+                user: null,
+            });
+            window.open("/", "_self");
+        }
+
         return (
             <Card style={{marginTop: 50, marginBottom: 15 }}>
                 <Card.Img variant="top" src={movie.ImagePath} />
