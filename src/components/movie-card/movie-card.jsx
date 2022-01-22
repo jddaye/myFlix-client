@@ -12,7 +12,7 @@ export class MovieCard extends React.Component {
     render() {
         const {movie} = this.props;
 
-        onLoggedOut() {
+        onLoggedOut(); {
             localStorage.removeItem("token");
             localStorage.removeItem("user");
             this.setState({
