@@ -7,6 +7,8 @@ import "./login-view.scss";
 //axios import
 import axios from 'axios';
 
+import {Link} from 'react-router-dom';
+
 export function LoginView(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');

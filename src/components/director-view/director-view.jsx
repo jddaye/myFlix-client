@@ -13,7 +13,7 @@ export class DirectorView extends React.Component {
             <Container>
                 <br />
                 <Card align="center">
-                    <h4>Director</h4>
+                    <h2>Director</h2>
                     <Card.Body>
                         <div>
                             <span className="label">Name: </span>

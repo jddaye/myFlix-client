@@ -13,7 +13,7 @@ export class GenreView extends React.Component {
                 <br />
                 <Card align="center">
                     <br />
-                    <h4>{Genre.Name}</h4>
+                    <h2>{Genre.Name}</h2>
                     <Card.Body>
                         <div>
                             <span className="label">Description: </span>
