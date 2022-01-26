@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
-
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 import './movie-view.scss';
 
@@ -18,8 +18,8 @@ export class MovieView extends React.Component {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('user');
 
-        axios.post('https://myflyx.herokuapp.com/users/${username}/movies/${this.props.movie._id}', {}, {
-            headers: { Authorization: 'Bearer ${token}' },
+        axios.post(`https://myflyx.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {}, {
+            headers: { Authorization: `Bearer ${token}` },
             method: 'POST'
         })
             .then(response => {
@@ -70,12 +70,8 @@ export class MovieView extends React.Component {
 
                 <div className="movie-genre">
                     <span className="label">Genre: </span>
-                    <span className="value">{movie.Genre}</span>
+                    <span className="value"><Link to={`/genres/${movie.Genre}`}>{movie.Genre}</Link></span>
                 </div>
-
-                <Link to={'/genres/${movie.Genre.Name}'}>
-                    <Button variant='link'>Genre</Button>
-                </Link>
                 
                 <div className="movie-description">
                     <span className="label">Description: </span>
@@ -84,12 +80,8 @@ export class MovieView extends React.Component {
 
                 <div className="movie-director">
                     <span className="label">Director: </span>
-                    <span className="value">{movie.Director.Name}</span>
+                    <span className="value"><Link to= {`/directors/${movie.Director.Name}`}>{movie.Director.Name}</Link></span>
                 </div>
-
-                <Link to= {'/directors/${movie.Director.Name}'}>
-                    <Button variant='link'>Director</Button>
-                </Link>
 
                 <div className="movie-actors">
                     <span className="label">Actors: </span>
