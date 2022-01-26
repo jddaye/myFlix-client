@@ -1,0 +1,21 @@
+.registrationNavbar {
+    background: yellow;
+  }
+  
+  html,
+  body,
+  #loginCard > div {
+    background: blue !important;
+    height: 100%;
+  }
+  
+  html,
+  body,
+  #registrationContainer > div {
+    background: green !important;
+    height: 100%;
+  }
+  
+  body {
+    font-family: "Teko", sans-serif !important;
+  }
