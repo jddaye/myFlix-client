@@ -1,0 +1,94 @@
+.registrationNavbar {
+  background: yellow;
+}
+
+html,
+body,
+#loginCard > div {
+  background: blue !important;
+  height: 100%;
+}
+
+html,
+body,
+#registrationContainer > div {
+  background: green !important;
+  height: 100%;
+}
+
+body {
+  font-family: "Teko", sans-serif !important;
+}
+.loginNavbar {
+  background: red;
+}
+
+html,
+body,
+#loginCard > div {
+  background: purple !important;
+  height: 100%;
+}
+
+html,
+body,
+#loginContainer > div {
+  background: pink !important;
+  height: 100%;
+}
+
+body {
+  font-family: "Teko", sans-serif !important;
+}
+.loginNavbar {
+  background: red;
+}
+
+html,
+body,
+#loginCard > div {
+  background: purple !important;
+  height: 100%;
+}
+
+html,
+body,
+#loginContainer > div {
+  background: pink !important;
+  height: 100%;
+}
+
+#movieCard > div {
+  background: black !important;
+  height: 100%;
+}
+
+body {
+  font-family: "Teko", sans-serif !important;
+}
+.loginNavbar {
+  background: red;
+}
+
+html,
+body,
+#loginCard > div {
+  background: purple !important;
+  height: 100%;
+}
+
+html,
+body,
+#loginContainer > div {
+  background: pink !important;
+  height: 100%;
+}
+
+body {
+  font-family: "Teko", sans-serif !important;
+}
+.my-flix {
+  color: steelblue;
+}
+
+/*# sourceMappingURL=/src.78399e21.css.map */

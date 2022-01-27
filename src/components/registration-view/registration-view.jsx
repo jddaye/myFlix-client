@@ -80,7 +80,7 @@ export function RegistrationView(props) {
                                         Submit
                                     </Button>
                                     <div className='mt-3'>
-                                        <Link to="/">
+                                        <Link to={"/"}>
                                             Log in
                                         </Link>
                                     </div>
