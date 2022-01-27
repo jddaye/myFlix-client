@@ -12,17 +12,8 @@ export class MovieCard extends React.Component {
     render() {
         const {movie} = this.props;
 
-        onLoggedOut(); {
-            localStorage.removeItem("token");
-            localStorage.removeItem("user");
-            this.setState({
-                user: null,
-            });
-            window.open("/", "_self");
-        }
-
         return (
-            <Card style={{marginTop: 50, marginBottom: 15 }}>
+            <Card style={{marginTop: 20, marginBottom: 15 }}>
                 <Card.Img variant="top" src={movie.ImagePath} />
                 <Card.Body>
                     
@@ -30,15 +21,15 @@ export class MovieCard extends React.Component {
                     <Card.Text> {movie.Genre} </Card.Text>
                     <Card.Text> {movie.Description} </Card.Text>
                     
-                    <Link to= {'/movies/${movie._id}'}>
+                    <Link to= {`/movies/${movie._id}`}>
                         <Button variant="link">Open</Button>
                     </Link>
 
-                    <Link to={'/directors/${movie.Director.Name}'}>
+                    <Link to={`/directors/${movie.Director.Name}`}>
                         <Button variant="link">Director</Button>
                     </Link>
 
-                    <Link to={'/genres/${movie.Genre.Name}'}>
+                    <Link to={`/genres/${movie.Genre}`}>
                         <Button variant="link">Genre</Button>
                     </Link>
 
@@ -51,13 +42,14 @@ export class MovieCard extends React.Component {
 MovieCard.propTypes = {
     movie: PropTypes.shape({
         Name: PropTypes.string.isRequired,
-        Directors: PropTypes.string.isRequired,
-        Actors: PropTypes.string.isRequired,
-        Genre: PropTypes.shape({
-            Name: PropTypes.string.isRequired
+        Director: PropTypes.shape({
+            Name: PropTypes.string.isRequired,
+            Bio: PropTypes.string.isRequired
         }),
+        Actors: PropTypes.array.isRequired,
+        Genre: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
         ImagePath: PropTypes.string.isRequired
     }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+    // onMovieClick: PropTypes.func.isRequired
 };

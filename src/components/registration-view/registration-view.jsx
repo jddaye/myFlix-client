@@ -79,6 +79,11 @@ export function RegistrationView(props) {
                                     <Button variant="primary" type="submit" onClick={handleSubmit}>
                                         Submit
                                     </Button>
+                                    <div className='mt-3'>
+                                        <Link to="/">
+                                            Log in
+                                        </Link>
+                                    </div>
                                 </Form>
                             </Card.Body>
                         </Card>
@@ -90,13 +95,13 @@ export function RegistrationView(props) {
     )
 }
 
-RegistrationView.propTypes= {
-    registration: propTypes.shape({
-        Username: propTypes.string.isRequired,
-        Password: propTypes.string.isRequired,
-        Email: propTypes.string.isRequired,
-        Birthday: propTypes.string,
-    }),
+// RegistrationView.propTypes= {
+//     registration: propTypes.shape({
+//         Username: propTypes.string.isRequired,
+//         Password: propTypes.string.isRequired,
+//         Email: propTypes.string.isRequired,
+//         Birthday: propTypes.string,
+//     }),
 
-    onRegistration: propTypes.func,
-};
+//     onRegistration: propTypes.func,
+// };

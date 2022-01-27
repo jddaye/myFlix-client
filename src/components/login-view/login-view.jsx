@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Form, Card, CardGroup, Container, Col, Row} from 'react-bootstrap';
+import {Form, Card, CardGroup, Container, Col, Row, Button} from 'react-bootstrap';
 
 //SCSS import
 import "./login-view.scss";
@@ -17,7 +17,7 @@ export function LoginView(props) {
         e.preventDefault();
         console.log(username, password);
         //Send a request to the server for authentication
-        axios.post('myflyx.herokuapp.com/login', {
+        axios.post('https://myflyx.herokuapp.com/login', {
             Username: username,
             Password: password
         })
@@ -65,6 +65,11 @@ export function LoginView(props) {
                                     <Button variant="primary" type="submit" onClick={handleSubmit}>
                                         Submit
                                     </Button>
+                                    <div className='mt-3'>
+                                        <Link to="/register">
+                                            Register as new user
+                                        </Link>
+                                    </div>
                                 </Form>
                             </Card.Body>
                         </Card>
