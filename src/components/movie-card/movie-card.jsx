@@ -10,7 +10,7 @@ import "./movie-card.scss";
 
 export class MovieCard extends React.Component {
     render() {
-        const {movie} = this.props;
+        const {movie, onBackClick} = this.props;
 
         return (
             <Card style={{marginTop: 20, marginBottom: 15 }}>
