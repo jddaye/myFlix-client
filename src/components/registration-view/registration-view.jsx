@@ -17,7 +17,7 @@ export function RegistrationView(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('myflyx.herokuapp.com/users', {
+        axios.post('http://myflyx.herokuapp.com/users', {
             Username: username,
             Password: password, 
             Birthday: birthday,

@@ -54019,6 +54019,8 @@ var _reactBootstrap = require("react-bootstrap");
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _reactRouterDom = require("react-router-dom");
+
 require("./registration-view.scss");
 
 var _propTypes = require("prop-types");
@@ -54065,7 +54067,7 @@ function RegistrationView(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
 
-    _axios.default.post('myflyx.herokuapp.com/users', {
+    _axios.default.post('http://myflyx.herokuapp.com/users', {
       Username: username,
       Password: password,
       Birthday: birthday,
@@ -54117,7 +54119,7 @@ function RegistrationView(props) {
     onClick: handleSubmit
   }, "Submit"), /*#__PURE__*/_react.default.createElement("div", {
     className: "mt-3"
-  }, /*#__PURE__*/_react.default.createElement(Link, {
+  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, "Log in")))))))));
 } // RegistrationView.propTypes= {
@@ -54129,7 +54131,7 @@ function RegistrationView(props) {
 //     }),
 //     onRegistration: propTypes.func,
 // };
-},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","axios":"../node_modules/axios/index.js","./registration-view.scss":"components/registration-view/registration-view.scss","prop-types":"../node_modules/prop-types/index.js"}],"components/login-view/login-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./registration-view.scss":"components/registration-view/registration-view.scss","prop-types":"../node_modules/prop-types/index.js"}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -55494,7 +55496,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54977" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58886" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
