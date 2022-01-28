@@ -3,6 +3,8 @@ import {Form, Button, Card, CardGroup, Container, Col, Row} from 'react-bootstra
 
 import axios from 'axios';
 
+import {Link} from 'react-router-dom';
+
 //import SCSS
 import "./registration-view.scss"
 import { propTypes } from 'prop-types';
