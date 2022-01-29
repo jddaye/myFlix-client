@@ -54579,7 +54579,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Movies: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, Director.Movies)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+      }, Director.Movies.Name)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
         className: "backButton"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         size: "md",
@@ -54772,7 +54772,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           Password: response.data.Password,
           Email: response.data.Email,
           Birthday: response.data.Birthday,
-          FavoriteMovies: response.data.FavoriteMovies
+          FavoriteMovies: response.data.FavoriteMovies || []
         });
       }).catch(function (error) {
         console.log(error);
@@ -55279,10 +55279,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/movies/:movieId",
         render: function render(_ref) {
-          var match = _ref.match;
+          var match = _ref.match,
+              history = _ref.history;
           return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
             md: 8
           }, /*#__PURE__*/_react.default.createElement(_movieView.MovieView, {
+            onBackClick: function onBackClick() {
+              return history.goBack();
+            },
             movie: movies.find(function (m) {
               return m._id === match.params.movieId;
             })
@@ -55498,7 +55502,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61385" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53087" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

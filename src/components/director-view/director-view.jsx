@@ -27,7 +27,7 @@ export class DirectorView extends React.Component {
                         <div>
 
                             <span className="label">Movies: </span>
-                            <span className="value">{Director.Movies}</span>
+                            <span className="value">{Director.Movies.Name}</span>
                         </div>
 
                         <br />
