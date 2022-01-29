@@ -54579,7 +54579,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Movies: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, Director.Movies.Name)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+      }, Director.Movies)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
         className: "backButton"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         size: "md",
