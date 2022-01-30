@@ -55361,7 +55361,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement(_registrationView.RegistrationView, null));
         }
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-        path: "/directors/directorName",
+        path: "/directors/:directorName",
         render: function render(_ref2) {
           var match = _ref2.match,
               history = _ref2.history;
