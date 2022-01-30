@@ -31,6 +31,7 @@ export class GenreView extends React.Component {
 
     render() {
         const {onBackClick, movies } = this.props;
+        const {Genre} = this.state;
 
         return (
             <Container>

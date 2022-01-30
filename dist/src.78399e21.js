@@ -54623,6 +54623,8 @@ var _reactBootstrap = require("react-bootstrap");
 
 require("./genre-view.scss");
 
+var _axios = _interopRequireDefault(require("axios"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54653,18 +54655,41 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(GenreView);
 
   function GenreView() {
+    var _this;
+
     _classCallCheck(this, GenreView);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this);
+    _this.state = {
+      genre: null
+    };
+    return _this;
   }
 
   _createClass(GenreView, [{
+    key: "getGenre",
+    value: function getGenre(token) {
+      var _this2 = this;
+
+      _axios.default.get("https://myflyx.herokuapp.com/genre/".concat(props.match.params.genreName), {
+        headers: {
+          Authorization: "Bearer".concat(token)
+        }
+      }).then(function (response) {
+        _this2.setState({
+          genre: response.data
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          Genre = _this$props.Genre,
           onBackClick = _this$props.onBackClick,
           movies = _this$props.movies;
+      var Genre = this.state.Genre;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
         align: "center"
       }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h2", null, Genre), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
@@ -54694,7 +54719,7 @@ GenreView.propTypes = {
   // }).isRequired,
   Genre: _propTypes.default.string.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./genre-view.scss":"components/genre-view/genre-view.scss","axios":"../node_modules/axios/index.js"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -55502,7 +55527,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53087" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57571" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
