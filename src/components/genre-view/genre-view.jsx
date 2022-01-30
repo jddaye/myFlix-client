@@ -3,10 +3,34 @@ import PropTypes from "prop-types";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 
 import "./genre-view.scss";
+import axios from "axios";
 
 export class GenreView extends React.Component {
+
+    constructor(){
+        super();
+
+        this.state={
+            genre:null,
+        };
+    }
+
+    getGenre(token){
+        axios.get(`https://myflyx.herokuapp.com/genre/${props.match.params.genreName}`, {
+            headers: {Authorization: `Bearer${token}`}
+        })
+        .then(response => {
+            this.setState({
+                    genre:response.data
+                });
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+    }
+
     render() {
-        const { Genre, onBackClick, movies } = this.props;
+        const {onBackClick, movies } = this.props;
 
         return (
             <Container>
