@@ -6,8 +6,31 @@ import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import "./director-view.scss";
 
 export class DirectorView extends React.Component {
+
+    getDirector(token){
+        axios.get(`https://myflyx.herokuapp.com/genre/${props.match.params.directorName}`, {
+            headers: {Authorization: `Bearer${token}`}
+        })
+        .then(response => {
+            this.setState({
+                    director:response.data
+                });
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+    }
+
+    componentDidMount(){
+        let accessToken= localStorage.getItem('token');
+        if (accessToken !== null){
+            this.getDirector(accessToken);
+        }
+    }
+
     render() {
-        const { Director, onBackClick, movies } = this.props;
+        const { onBackClick, movies } = this.props;
+        const { Director } = this.state;
 
         return (
             <Container>

@@ -54559,12 +54559,38 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(DirectorView, [{
+    key: "getDirector",
+    value: function getDirector(token) {
+      var _this = this;
+
+      axios.get("https://myflyx.herokuapp.com/genre/".concat(props.match.params.directorName), {
+        headers: {
+          Authorization: "Bearer".concat(token)
+        }
+      }).then(function (response) {
+        _this.setState({
+          director: response.data
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var accessToken = localStorage.getItem('token');
+
+      if (accessToken !== null) {
+        this.getDirector(accessToken);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          Director = _this$props.Director,
           onBackClick = _this$props.onBackClick,
           movies = _this$props.movies;
+      var Director = this.state.Director;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
         align: "center"
       }, /*#__PURE__*/_react.default.createElement("h2", null, "Director"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
