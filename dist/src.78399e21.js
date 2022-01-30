@@ -54684,6 +54684,15 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var accessToken = localStorage.getItem('token');
+
+      if (accessToken !== null) {
+        this.getGenre(accessToken);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,

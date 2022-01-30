@@ -29,6 +29,13 @@ export class GenreView extends React.Component {
         });
     }
 
+    componentDidMount(){
+        let accessToken= localStorage.getItem('token');
+        if (accessToken !== null){
+            this.getGenre(accessToken);
+        }
+    }
+
     render() {
         const {onBackClick, movies } = this.props;
         const {Genre} = this.state;
