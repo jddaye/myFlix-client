@@ -117,7 +117,7 @@ export class MainView extends React.Component {
                         </Col>
                     }} />
                 <Route
-                        path="/directors/:Name"
+                        path="/directors/directorName"
                         render={({ match, history }) => {
                             if (!user)
                                 return (
@@ -165,7 +165,7 @@ export class MainView extends React.Component {
                     />  
 
                     <Route
-                        path="/genres/:Name"
+                        path="/genres/:genreName"
                         render={({ match, history }) => {
                             if (!user)
                                 return (
