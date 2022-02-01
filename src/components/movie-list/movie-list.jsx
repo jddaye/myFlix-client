@@ -7,23 +7,23 @@ import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-
 import {MovieCard} from '../movie-card/movie-card';
 
 const mapStateToProps= state => {
-    const {visibiltyFilter}= state;
-    return {visibiltyFilter};
+    const {visibilityFilter}= state;
+    return {visibilityFilter};
 };
 
 function MoviesList(props){
-    const {movies, visibiltyFilter}= props;
+    const {movies, visibilityFilter}= props;
     let filteredMovies= movies;
 
-    if (visibiltyFilter !== '' && visibilityFilter !== undefined){
-        filteredMovies= movies.filter(m => m.Name.toLowerCase().includes(visibiltyFilter.toLowerCase()));
+    if (visibilityFilter !== '' && visibilityFilter !== undefined){
+        filteredMovies= movies.filter(m => m.Name.toLowerCase().includes(visibilityFilter.toLowerCase()));
     }
 
     if (!movies) return <div className="main-view"/>;
 
     return <>
         <Col md={12} style={{margin: '1em'}}>
-            <VisibilityFilterInput visibiltyFilter={visibiltyFilter} />
+            <VisibilityFilterInput visibilityFilter={visibilityFilter} />
         </Col>
 
         {filteredMovies.map(m => (

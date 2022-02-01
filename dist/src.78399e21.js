@@ -41071,19 +41071,19 @@ var _actions = require("../../actions/actions");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function VisibiltyFilterInput(props) {
+function VisibilityFilterInput(props) {
   return /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     onChange: function onChange(e) {
       return props.setFilter(e.target.value);
     },
-    value: props.VisibiltyFilter,
+    value: props.VisibilityFilter,
     placeholder: "filter"
   });
 }
 
 var _default = (0, _reactRedux.connect)(null, {
   setFilter: _actions.setFilter
-})(VisibiltyFilterInput);
+})(VisibilityFilterInput);
 
 exports.default = _default;
 },{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","../../actions/actions":"actions/actions.js"}],"../node_modules/@restart/ui/esm/Button.js":[function(require,module,exports) {
@@ -41680,20 +41680,20 @@ var _movieCard = require("../movie-card/movie-card");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-  var visibiltyFilter = state.visibiltyFilter;
+  var visibilityFilter = state.visibilityFilter;
   return {
-    visibiltyFilter: visibiltyFilter
+    visibilityFilter: visibilityFilter
   };
 };
 
 function MoviesList(props) {
   var movies = props.movies,
-      visibiltyFilter = props.visibiltyFilter;
+      visibilityFilter = props.visibilityFilter;
   var filteredMovies = movies;
 
-  if (visibiltyFilter !== '') {
+  if (visibilityFilter !== '' && visibilityFilter !== undefined) {
     filteredMovies = movies.filter(function (m) {
-      return m.Name.toLowerCase().includes(visibiltyFilter.toLowerCase());
+      return m.Name.toLowerCase().includes(visibilityFilter.toLowerCase());
     });
   }
 
@@ -41705,8 +41705,8 @@ function MoviesList(props) {
     style: {
       margin: '1em'
     }
-  }, /*#__PURE__*/_react.default.createElement(VisibilityFilterInput, {
-    visibiltyFilter: visibiltyFilter
+  }, /*#__PURE__*/_react.default.createElement(_visibilityFilterInput.default, {
+    visibilityFilter: visibilityFilter
   })), filteredMovies.map(function (m) {
     return /*#__PURE__*/_react.default.createElement(_Col.default, {
       md: 3,
@@ -58564,7 +58564,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52503" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63230" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
