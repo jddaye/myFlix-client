@@ -41634,6 +41634,10 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
       }, "Director")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/actors/".concat(movie.Actor.Name)
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
+        variant: "link"
+      }, "Actor")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/genres/".concat(movie.Genre)
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
@@ -41652,7 +41656,10 @@ MovieCard.propTypes = {
       Name: _propTypes.default.string.isRequired,
       Bio: _propTypes.default.string.isRequired
     }),
-    Actors: _propTypes.default.array.isRequired,
+    Actor: _propTypes.default.shape({
+      Name: _propTypes.default.string.isRequired,
+      Movie: _propTypes.default.string.isRequired
+    }),
     Genre: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
     ImagePath: _propTypes.default.string.isRequired
