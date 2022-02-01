@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
 import {setMovies, setUser} from '../../actions/actions';
-import MoviesList from '../movies-list/movies-list';
+import MoviesList from '../movie-list/movie-list';
 
 import {RegistrationView} from '../registration-view/registration-view';
 import {LoginView} from '../login-view/login-view';
