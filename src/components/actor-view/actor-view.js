@@ -40,7 +40,7 @@ export class ActorView extends React.Component {
                     <Card.Body>
                         <div>
                             <span className="label">Name: </span>
-                            <span className="value">{Actor.Name}</span>
+                            <span className="value">{Actor}</span>
                         </div>
 
                         <div>

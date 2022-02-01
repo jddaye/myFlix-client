@@ -57823,7 +57823,7 @@ var ActorView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Name: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, Actor.Name)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+      }, Actor)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
       }, "Movies: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
