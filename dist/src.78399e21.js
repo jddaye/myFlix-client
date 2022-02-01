@@ -57455,7 +57455,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Actors: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Actors.join(", "))), /*#__PURE__*/_react.default.createElement("button", {
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/actors/".concat(movie.Actor.Name)
+      }, movie.Actor.Name))), /*#__PURE__*/_react.default.createElement("button", {
         onClick: function onClick() {
           onBackClick(null);
         }
