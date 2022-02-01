@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
-import {setMovies} from '../../actions/actions';
+import {setMovies, setUser} from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import {RegistrationView} from '../registration-view/registration-view';
@@ -46,6 +46,24 @@ class MainView extends React.Component {
         })
         .then(response => {
             this.props.setMovies(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    getUser(token) {
+        axios.get('https://myflyx.herokuapp.com/users/${user}', {
+            headers: {Authorization: `Bearer ${token}`}
+        })
+        .then(response => {
+            this.props.setUser({
+                username: response.data.Username,
+                password: response.data.Password, 
+                email: response.data.Email,
+                birthday: response.data.Birthday,
+                favoriteMovies: response.data.favoriteMovies
+            });
         })
         .catch(function (error) {
             console.log(error);
@@ -94,11 +112,7 @@ class MainView extends React.Component {
                             <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>
                         </Col>
                         if (movies.length === 0) return <div className="main-view"/>;
-                        return movies.map(m => (
-                            <Col md={3} key={m._id}>
-                                <MovieCard movie={m} />
-                            </Col>
-                         ))
+                        return <MoviesList movies={movies}/>
                         }} />
                     <Route path="/movies/:movieId" render={({ match, history }) => {
                         return <Col md={8}>
@@ -207,3 +221,9 @@ class MainView extends React.Component {
     
     }
 }
+
+let mapStateToProps = state => {
+    return {movies: state.movies}
+}
+
+export default connect(mapStateToProps, {setMovies})(MainView);
