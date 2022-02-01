@@ -2,7 +2,7 @@ import React from 'react';
 import Col from 'react-bootstrap/Col';
 import {connect} from 'react-redux';
 
-import visibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 
 import {MovieCard} from '../movie-card/movie-card';
 
@@ -15,7 +15,7 @@ function MoviesList(props){
     const {movies, visibiltyFilter}= props;
     let filteredMovies= movies;
 
-    if (visibiltyFilter !== ''){
+    if (visibiltyFilter !== '' && visibilityFilter !== undefined){
         filteredMovies= movies.filter(m => m.Name.toLowerCase().includes(visibiltyFilter.toLowerCase()));
     }
 
