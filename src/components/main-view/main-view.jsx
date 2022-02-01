@@ -163,7 +163,7 @@ class MainView extends React.Component {
                                     <ActorView
                                         Actor={
                                             movies.find(
-                                                (m) => m.Actor === match.params.Name
+                                                (m) => m.Actor === match.params
                                             ).Actor
                                         }
                                         movies={movies}

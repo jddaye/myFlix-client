@@ -58515,7 +58515,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             md: 8
           }, /*#__PURE__*/_react.default.createElement(_actorView.ActorView, {
             Actor: movies.find(function (m) {
-              return m.Actor === match.params.Name;
+              return m.Actor === match.params;
             }).Actor,
             movies: movies,
             onBackClick: function onBackClick() {
