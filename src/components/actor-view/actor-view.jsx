@@ -51,7 +51,7 @@ class Actor extends React.Component {
 
                             <span className="label">Movies: </span>
                             {typeof Actor.Movies == 'string'? (<span className="value"> {Actor.Movies} </span>) 
-                            : Actor.movies.map((movie, idx) =>
+                            : Actor.Movies.map((movie, idx) =>
                                 <span className="value" key={idx}> 
                                     {movie}{idx < Actor.Movies.length-1? ", ": ""}
                                 </span>)

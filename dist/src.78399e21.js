@@ -57873,7 +57873,7 @@ var Actor = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Movies: "), typeof _Actor.Movies == 'string' ? /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, " ", _Actor.Movies, " ") : _Actor.movies.map(function (movie, idx) {
+      }, " ", _Actor.Movies, " ") : _Actor.Movies.map(function (movie, idx) {
         return /*#__PURE__*/_react.default.createElement("span", {
           className: "value",
           key: idx
