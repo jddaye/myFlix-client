@@ -29,10 +29,10 @@ export class MovieCard extends React.Component {
                         <Button variant="link">Director</Button>
                     </Link>
                     
-                    {/* <Link to={`/actors/${movie.Actor}`}>
+                    <Link to={`/actors/${movie.Actor}`}>
 
                         <Button variant="link">Actor</Button>
-                    </Link> */}
+                    </Link>
 
                     <Link to={`/genres/${movie.Genre}`}>
                         <Button variant="link">Genre</Button>
