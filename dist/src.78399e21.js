@@ -57671,7 +57671,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
     value: function getGenre(token) {
       var _this2 = this;
 
-      _axios.default.get("https://myflyx.herokuapp.com/genre/".concat(props.match.params.genre), {
+      _axios.default.get("https://myflyx.herokuapp.com/genre/".concat(props.match.params.genreName), {
         headers: {
           Authorization: "Bearer".concat(token)
         }

@@ -16,7 +16,7 @@ export class GenreView extends React.Component {
     }
 
     getGenre(token){
-        axios.get(`https://myflyx.herokuapp.com/genre/${props.match.params.genre}`, {
+        axios.get(`https://myflyx.herokuapp.com/genre/${props.match.params.genreName}`, {
             headers: {Authorization: `Bearer${token}`}
         })
         .then(response => {
