@@ -56,8 +56,8 @@ export class Director extends React.Component {
                         <div>
 
                             <span className="label">Movies: </span>
-                            {
-                                Director.Movies.map((movie, idx) =>
+                            {typeof Director.Movies == 'string'? (<span className="value"> {Director.Movies} </span>) 
+                            :    Director.Movies.map((movie, idx) =>
                                 <span className="value" key={idx}> 
                                     {movie}{idx < Director.Movies.length-1? ", ": ""}
                                 </span>)

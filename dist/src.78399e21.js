@@ -57599,7 +57599,9 @@ var Director = /*#__PURE__*/function (_React$Component) {
         className: "value"
       }, _Director.Bio)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Movies: "), _Director.Movies.map(function (movie, idx) {
+      }, "Movies: "), typeof _Director.Movies == 'string' ? /*#__PURE__*/_react.default.createElement("span", {
+        className: "value"
+      }, " ", _Director.Movies, " ") : _Director.Movies.map(function (movie, idx) {
         return /*#__PURE__*/_react.default.createElement("span", {
           className: "value",
           key: idx
@@ -58740,7 +58742,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61233" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61939" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
