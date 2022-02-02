@@ -58514,9 +58514,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
             md: 8
           }, /*#__PURE__*/_react.default.createElement(_actorView.ActorView, {
-            Actors: movies.find(function (m) {
+            Actor: movies.find(function (m) {
               return m.Actors.Name === match.params.Name;
-            }).Actors,
+            }).Actor,
             movies: movies,
             onBackClick: function onBackClick() {
               return history.goBack();

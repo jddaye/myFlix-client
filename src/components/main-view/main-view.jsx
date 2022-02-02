@@ -161,10 +161,10 @@ class MainView extends React.Component {
                             return (
                                 <Col md={8}>
                                     <ActorView
-                                        Actors={
+                                        Actor={
                                             movies.find(
                                                 (m) => m.Actors.Name === match.params.Name
-                                            ).Actors
+                                            ).Actor
                                         }
                                         movies={movies}
                                         onBackClick={() => history.goBack()}
