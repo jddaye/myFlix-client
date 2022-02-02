@@ -41634,7 +41634,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
       }, "Director")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/actors/".concat(movie.Actor)
+        to: "/actors/".concat(movie.Actors)
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
       }, "Actor")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
