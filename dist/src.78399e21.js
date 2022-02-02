@@ -41634,10 +41634,6 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
       }, "Director")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/actors/".concat(movie.Actors)
-      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
-        variant: "link"
-      }, "Actor")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/genres/".concat(movie.Genre)
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
@@ -41660,7 +41656,7 @@ MovieCard.propTypes = {
     //     Name: PropTypes.string.isRequired,
     //     Movie: PropTypes.string.isRequired
     // }),
-    Actors: _propTypes.default.string.isRequired,
+    Actor: _propTypes.default.string.isRequired,
     Genre: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
     ImagePath: _propTypes.default.string.isRequired
@@ -57463,10 +57459,11 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Actors: "), movie.Actors.map(function (actor, idx) {
         return /*#__PURE__*/_react.default.createElement("span", {
-          className: "value"
+          className: "value",
+          key: idx
         }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
           to: "/actors/".concat(actor)
-        }, idx < move.Actors.length - 1 ? ", " : ""));
+        }, actor, idx < movie.Actors.length - 1 ? ", " : ""));
       })), /*#__PURE__*/_react.default.createElement("button", {
         onClick: function onClick() {
           onBackClick(null);
@@ -57490,13 +57487,15 @@ module.hot.accept(reloadCSS);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DirectorView = void 0;
+exports.DirectorView = exports.Director = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _movieCard = require("../movie-card/movie-card");
+var _reactRouter = require("react-router");
 
 var _reactBootstrap = require("react-bootstrap");
 
@@ -57526,29 +57525,43 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var DirectorView = /*#__PURE__*/function (_React$Component) {
-  _inherits(DirectorView, _React$Component);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var _super = _createSuper(DirectorView);
+var Director = /*#__PURE__*/function (_React$Component) {
+  _inherits(Director, _React$Component);
 
-  function DirectorView() {
-    _classCallCheck(this, DirectorView);
+  var _super = _createSuper(Director);
 
-    return _super.apply(this, arguments);
+  function Director() {
+    var _this;
+
+    _classCallCheck(this, Director);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      Director: null
+    });
+
+    return _this;
   }
 
-  _createClass(DirectorView, [{
+  _createClass(Director, [{
     key: "getDirector",
     value: function getDirector(token) {
-      var _this = this;
+      var _this2 = this;
 
-      axios.get("https://myflyx.herokuapp.com/director/".concat(props.match.params.directorName), {
+      _axios.default.get("https://myflyx.herokuapp.com/directors/".concat(this.props.match.params.Name), {
         headers: {
-          Authorization: "Bearer".concat(token)
+          Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        _this.setState({
-          director: response.data
+        _this2.setState({
+          Director: response.data
         });
       }).catch(function (error) {
         console.log(error);
@@ -57569,22 +57582,25 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           onBackClick = _this$props.onBackClick,
           movies = _this$props.movies;
-      var Director = this.state.Director;
+      var _Director = this.state.Director;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
         align: "center"
-      }, /*#__PURE__*/_react.default.createElement("h2", null, "Director"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("h2", null, "Director"), _Director && /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
       }, "Name: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, Director.Name)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+      }, _Director.Name)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
       }, "Biography: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, Director.Bio)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+      }, _Director.Bio)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Movies: "), /*#__PURE__*/_react.default.createElement("span", {
-        className: "value"
-      }, Director.Movies)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+      }, "Movies: "), _Director.Movies.map(function (movie, idx) {
+        return /*#__PURE__*/_react.default.createElement("span", {
+          className: "value",
+          key: idx
+        }, movie, idx < _Director.Movies.length - 1 ? ", " : "");
+      })), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
         className: "backButton"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         size: "md",
@@ -57596,18 +57612,20 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return DirectorView;
+  return Director;
 }(_react.default.Component);
 
-exports.DirectorView = DirectorView;
-DirectorView.proptypes = {
+exports.Director = Director;
+Director.proptypes = {
   Director: _propTypes.default.shape({
     Name: _propTypes.default.string.isRequired,
     Bio: _propTypes.default.string,
     Movies: _propTypes.default.string
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","../movie-card/movie-card":"components/movie-card/movie-card.jsx","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+var DirectorView = (0, _reactRouter.withRouter)(Director);
+exports.DirectorView = DirectorView;
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router":"../node_modules/react-router/esm/react-router.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -57623,6 +57641,8 @@ exports.GenreView = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactRouter = require("react-router");
 
 var _reactBootstrap = require("react-bootstrap");
 
@@ -57654,35 +57674,37 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var GenreView = /*#__PURE__*/function (_React$Component) {
-  _inherits(GenreView, _React$Component);
+var Genre = /*#__PURE__*/function (_React$Component) {
+  _inherits(Genre, _React$Component);
 
-  var _super = _createSuper(GenreView);
+  var _super = _createSuper(Genre);
 
-  function GenreView() {
+  function Genre(props) {
     var _this;
 
-    _classCallCheck(this, GenreView);
+    _classCallCheck(this, Genre);
 
-    _this = _super.call(this);
+    _this = _super.call(this, props);
     _this.state = {
-      genre: null
+      Genre: null
     };
     return _this;
   }
 
-  _createClass(GenreView, [{
+  _createClass(Genre, [{
     key: "getGenre",
     value: function getGenre(token) {
       var _this2 = this;
 
-      _axios.default.get("https://myflyx.herokuapp.com/genre/".concat(props.match.params.genreName), {
+      _axios.default.get("https://myflyx.herokuapp.com/genres/".concat(this.props.match.params.Name), {
         headers: {
-          Authorization: "Bearer".concat(token)
+          Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
+        console.log(response.data);
+
         _this2.setState({
-          genre: response.data
+          Genre: response.data
         });
       }).catch(function (error) {
         console.log(error);
@@ -57703,14 +57725,14 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           onBackClick = _this$props.onBackClick,
           movies = _this$props.movies;
-      var Genre = this.state.Genre;
-      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
+      var _Genre = this.state.Genre;
+      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement("br", null), _Genre && /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
         align: "center"
-      }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h2", null, Genre), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h2", null, _Genre.Name), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
       }, "Description: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, Genre)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+      }, _Genre.Description)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
         className: "backButton"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         size: "md",
@@ -57722,18 +57744,19 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return GenreView;
+  return Genre;
 }(_react.default.Component);
 
-exports.GenreView = GenreView;
-GenreView.propTypes = {
+Genre.propTypes = {
   // Genre: PropTypes.shape({
   //     Name: PropTypes.string.isRequired,
   //     Description: PropTypes.string.isRequired,
   // }).isRequired,
   Genre: _propTypes.default.string.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./genre-view.scss":"components/genre-view/genre-view.scss","axios":"../node_modules/axios/index.js"}],"components/actor-view/actor-view.scss":[function(require,module,exports) {
+var GenreView = (0, _reactRouter.withRouter)(Genre);
+exports.GenreView = GenreView;
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router":"../node_modules/react-router/esm/react-router.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./genre-view.scss":"components/genre-view/genre-view.scss","axios":"../node_modules/axios/index.js"}],"components/actor-view/actor-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -57749,6 +57772,10 @@ exports.ActorView = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _reactRouter = require("react-router");
 
 var _reactBootstrap = require("react-bootstrap");
 
@@ -57778,29 +57805,43 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var ActorView = /*#__PURE__*/function (_React$Component) {
-  _inherits(ActorView, _React$Component);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var _super = _createSuper(ActorView);
+var Actor = /*#__PURE__*/function (_React$Component) {
+  _inherits(Actor, _React$Component);
 
-  function ActorView() {
-    _classCallCheck(this, ActorView);
+  var _super = _createSuper(Actor);
 
-    return _super.apply(this, arguments);
+  function Actor() {
+    var _this;
+
+    _classCallCheck(this, Actor);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      Actor: null
+    });
+
+    return _this;
   }
 
-  _createClass(ActorView, [{
+  _createClass(Actor, [{
     key: "getActor",
     value: function getActor(token) {
-      var _this = this;
+      var _this2 = this;
 
-      axios.get("https://myflyx.herokuapp.com/actor/".concat(props.match.params.actorName), {
+      _axios.default.get("https://myflyx.herokuapp.com/actors/".concat(this.props.match.params.Name), {
         headers: {
-          Authorization: "Bearer".concat(token)
+          Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        _this.setState({
-          actor: response.data
+        _this2.setState({
+          Actor: response.data
         });
       }).catch(function (error) {
         console.log(error);
@@ -57821,18 +57862,23 @@ var ActorView = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           onBackClick = _this$props.onBackClick,
           movies = _this$props.movies;
-      var Director = this.state.Director;
+      var _Actor = this.state.Actor;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
         align: "center"
-      }, /*#__PURE__*/_react.default.createElement("h2", null, "Actor"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("h2", null, "Actor"), _Actor && /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
       }, "Name: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, Actor)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+      }, _Actor.Name)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Movies: "), /*#__PURE__*/_react.default.createElement("span", {
+      }, "Movies: "), typeof _Actor.Movies == 'string' ? /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, Actors.Movies)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+      }, " ", _Actor.Movies, " ") : _Actor.movies.map(function (movie, idx) {
+        return /*#__PURE__*/_react.default.createElement("span", {
+          className: "value",
+          key: idx
+        }, movie, idx < _Actor.Movies.length - 1 ? ", " : "");
+      })), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
         className: "backButton"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         size: "md",
@@ -57844,17 +57890,18 @@ var ActorView = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return ActorView;
+  return Actor;
 }(_react.default.Component);
 
-exports.ActorView = ActorView;
-ActorView.proptypes = {
+Actor.proptypes = {
   Actor: _propTypes.default.shape({
     Name: _propTypes.default.string.isRequired,
     Movies: _propTypes.default.string
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./actor-view.scss":"components/actor-view/actor-view.scss"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
+var ActorView = (0, _reactRouter.withRouter)(Actor);
+exports.ActorView = ActorView;
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-router":"../node_modules/react-router/esm/react-router.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./actor-view.scss":"components/actor-view/actor-view.scss"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -58494,10 +58541,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
             md: 8
           }, /*#__PURE__*/_react.default.createElement(_directorView.DirectorView, {
-            Director: movies.find(function (m) {
-              return m.Director.Name === match.params.Name;
-            }).Director,
-            movies: movies,
             onBackClick: function onBackClick() {
               return history.goBack();
             }
@@ -58519,10 +58562,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
             md: 8
           }, /*#__PURE__*/_react.default.createElement(_actorView.ActorView, {
-            Actor: movies.find(function (m) {
-              return m.Actors.Name === match.params.Name;
-            }).Actor,
-            movies: movies,
             onBackClick: function onBackClick() {
               return history.goBack();
             }
@@ -58544,10 +58583,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
             md: 8
           }, /*#__PURE__*/_react.default.createElement(_genreView.GenreView, {
-            movies: movies,
-            Genre: movies.find(function (m) {
-              return m.Genre === match.params.Name;
-            }).Genre,
             onBackClick: function onBackClick() {
               return history.goBack();
             }
@@ -58701,7 +58736,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58715" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56484" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
