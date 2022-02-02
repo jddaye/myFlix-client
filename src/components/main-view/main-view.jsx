@@ -136,14 +136,7 @@ class MainView extends React.Component {
                             if (movies.length === 0) return <div className="main-view" />;
                             return (
                                 <Col md={8}>
-                                    <DirectorView
-                                        Director={
-                                            movies.find(
-                                                (m) => m.Director.Name === match.params.Name
-                                            ).Director
-                                        }
-                                        movies={movies}
-                                        onBackClick={() => history.goBack()}
+                                    <DirectorView onBackClick={() => history.goBack()}
                                     />
                                 </Col>
                             );
@@ -160,14 +153,7 @@ class MainView extends React.Component {
                             if (movies.length === 0) return <div className="main-view" />;
                             return (
                                 <Col md={8}>
-                                    <ActorView
-                                        Actor={
-                                            movies.find(
-                                                (m) => m.Actors.Name === match.params.Name
-                                            ).Actor
-                                        }
-                                        movies={movies}
-                                        onBackClick={() => history.goBack()}
+                                    <ActorView onBackClick={() => history.goBack()}
                                     />
                                 </Col>
                             );
@@ -184,14 +170,7 @@ class MainView extends React.Component {
                             if (movies.length === 0) return <div className="main-view" />;
                             return (
                                 <Col md={8}>
-                                    <GenreView
-                                        movies={movies}
-                                        Genre={
-                                            movies.find((m) => m.Genre === match.params.Name)
-                                                .Genre
-                                        }
-                                        onBackClick={() => history.goBack()}
-                                    />
+                                    <GenreView onBackClick={() => history.goBack()} />
                                 </Col>
                             );
                         }}

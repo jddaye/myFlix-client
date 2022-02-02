@@ -86,9 +86,9 @@ export class MovieView extends React.Component {
                 <div className="movie-actors">
                     <span className="label">Actors: </span>
                     {movie.Actors.map((actor, idx) =>
-                    <span className="value">
-                        <Link to= {`/actors/${actor}`}>{idx < move.Actors.length-1? ", ": ""}</Link></span>
-                    )}
+                    <span className="value"  key={idx}> 
+                        <Link to= {`/actors/${actor}`}>{actor}{idx < movie.Actors.length-1? ", ": ""}</Link>
+                    </span>)}
                 </div>
 
                 <button onClick={() => {onBackClick(null); }}>Back</button>
