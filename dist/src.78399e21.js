@@ -57463,8 +57463,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, "Actors: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
       }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/actors/".concat(movie.Actor.Name)
-      }, movie.Actor.Name))), /*#__PURE__*/_react.default.createElement("button", {
+        to: "/actors/".concat(movie.Actors.Name)
+      }, movie.Actors.Name))), /*#__PURE__*/_react.default.createElement("button", {
         onClick: function onClick() {
           onBackClick(null);
         }
@@ -58515,7 +58515,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             md: 8
           }, /*#__PURE__*/_react.default.createElement(_actorView.ActorView, {
             Actor: movies.find(function (m) {
-              return m.Actor.Name === match.params.Name;
+              return m.Actors.Name === match.params.Name;
             }).Actor,
             movies: movies,
             onBackClick: function onBackClick() {
