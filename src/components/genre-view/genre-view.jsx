@@ -1,27 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 
 import "./genre-view.scss";
 import axios from "axios";
 
-export class GenreView extends React.Component {
+class Genre extends React.Component {
 
-    constructor(){
-        super();
-
+    constructor(props){
+        super(props);
         this.state={
-            genre:null,
+            Genre:null,
         };
     }
 
     getGenre(token){
-        axios.get(`https://myflyx.herokuapp.com/genre/${props.match.params.genre}`, {
-            headers: {Authorization: `Bearer${token}`}
+        axios.get(`https://myflyx.herokuapp.com/genres/${this.props.match.params.Name}`, {
+            headers: {Authorization: `Bearer ${token}`}
         })
         .then(response => {
             this.setState({
-                    genre:response.data
+                    Genre:response.data
                 });
         })
         .catch(function(error){
@@ -43,13 +43,13 @@ export class GenreView extends React.Component {
         return (
             <Container>
                 <br />
-                <Card align="center">
+                {Genre && (<Card align="center">
                     <br />
-                    <h2>{Genre}</h2>
+                    <h2>{Genre.Name}</h2>
                     <Card.Body>
                         <div>
                             <span className="label">Description: </span>
-                            <span className="value">{Genre}</span>
+                            <span className="value">{Genre.Description}</span>
                         </div>
                         
                         <br />
@@ -57,16 +57,18 @@ export class GenreView extends React.Component {
                             <Button size="md" variant="outline-primary" onClick={() => { onBackClick(null); }}>Back</Button>
                         </div>
                     </Card.Body>
-                </Card>
+                </Card>)}
             </Container>
         );
     }
 }
 
-GenreView.propTypes = {
+Genre.propTypes = {
     // Genre: PropTypes.shape({
     //     Name: PropTypes.string.isRequired,
     //     Description: PropTypes.string.isRequired,
     // }).isRequired,
     Genre: PropTypes.string.isRequired,
 };
+
+export const GenreView = withRouter(Genre);
