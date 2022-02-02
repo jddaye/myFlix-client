@@ -41660,7 +41660,7 @@ MovieCard.propTypes = {
     //     Name: PropTypes.string.isRequired,
     //     Movie: PropTypes.string.isRequired
     // }),
-    Actors: _propTypes.default.string.isRequired,
+    Actor: _propTypes.default.string.isRequired,
     Genre: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
     ImagePath: _propTypes.default.string.isRequired
