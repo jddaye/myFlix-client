@@ -57496,6 +57496,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _movieCard = require("../movie-card/movie-card");
+
 var _reactBootstrap = require("react-bootstrap");
 
 require("./director-view.scss");
@@ -57540,7 +57542,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
     value: function getDirector(token) {
       var _this = this;
 
-      axios.get("https://myflyx.herokuapp.com/genre/".concat(props.match.params.directorName), {
+      axios.get("https://myflyx.herokuapp.com/director/".concat(props.match.params.directorName), {
         headers: {
           Authorization: "Bearer".concat(token)
         }
@@ -57605,7 +57607,7 @@ DirectorView.proptypes = {
     Movies: _propTypes.default.string
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","../movie-card/movie-card":"components/movie-card/movie-card.jsx","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -57830,7 +57832,7 @@ var ActorView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Movies: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, Actor.Movies)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+      }, Actors.Movies)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
         className: "backButton"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         size: "md",

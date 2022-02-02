@@ -1,19 +1,25 @@
 import React from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 
 import "./director-view.scss";
 
-export class DirectorView extends React.Component {
+export class Director extends React.Component {
+
+    state = {
+        Director: null
+    }
 
     getDirector(token){
-        axios.get(`https://myflyx.herokuapp.com/genre/${props.match.params.directorName}`, {
-            headers: {Authorization: `Bearer${token}`}
+        axios.get(`https://myflyx.herokuapp.com/directors/${this.props.match.params.Name}`, {
+            headers: {Authorization: `Bearer ${token}`}
         })
         .then(response => {
             this.setState({
-                    director:response.data
+                    Director:response.data
                 });
         })
         .catch(function(error){
@@ -37,7 +43,7 @@ export class DirectorView extends React.Component {
                 <br />
                 <Card align="center">
                     <h2>Director</h2>
-                    <Card.Body>
+                    {Director && (<Card.Body>
                         <div>
                             <span className="label">Name: </span>
                             <span className="value">{Director.Name}</span>
@@ -50,24 +56,33 @@ export class DirectorView extends React.Component {
                         <div>
 
                             <span className="label">Movies: </span>
-                            <span className="value">{Director.Movies}</span>
+                            {
+                                Director.Movies.map((movie, idx) =>
+                                <span className="value" key={idx}> 
+                                    {movie}{idx < Director.Movies.length-1? ", ": ""}
+                                </span>)
+                            }
                         </div>
 
                         <br />
                         <div className="backButton">
                             <Button size="md" variant="outline-primary" onClick={() => { onBackClick(null); }}>Back</Button>
                         </div>
-                    </Card.Body>
+                    </Card.Body>)
+                    }
                 </Card>
             </Container>
         );
     }
 }
 
-DirectorView.proptypes = {
+Director.proptypes = {
     Director: PropTypes.shape({
         Name: PropTypes.string.isRequired,
         Bio: PropTypes.string,
         Movies: PropTypes.string,
     }).isRequired,
 };
+
+
+export const DirectorView = withRouter(Director);
