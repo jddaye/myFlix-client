@@ -57667,6 +57667,32 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(GenreView, [{
+    key: "getGenre",
+    value: function getGenre(token) {
+      var _this2 = this;
+
+      _axios.default.get("https://myflyx.herokuapp.com/genre/".concat(props.match.params.genre), {
+        headers: {
+          Authorization: "Bearer".concat(token)
+        }
+      }).then(function (response) {
+        _this2.setState({
+          genre: response.data
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var accessToken = localStorage.getItem('token');
+
+      if (accessToken !== null) {
+        this.getGenre(accessToken);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,

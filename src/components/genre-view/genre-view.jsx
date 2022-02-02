@@ -15,6 +15,27 @@ export class GenreView extends React.Component {
         };
     }
 
+    getGenre(token){
+        axios.get(`https://myflyx.herokuapp.com/genre/${props.match.params.genre}`, {
+            headers: {Authorization: `Bearer${token}`}
+        })
+        .then(response => {
+            this.setState({
+                    genre:response.data
+                });
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+    }
+
+    componentDidMount(){
+        let accessToken= localStorage.getItem('token');
+        if (accessToken !== null){
+            this.getGenre(accessToken);
+        }
+    }
+
     render() {
         const {onBackClick, movies } = this.props;
         const {Genre} = this.state;
