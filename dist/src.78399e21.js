@@ -57461,11 +57461,13 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "movie-actors"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Actors: "), /*#__PURE__*/_react.default.createElement("span", {
-        className: "value"
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/actors/".concat(movie.Actors.Name)
-      }, movie.Actors.Name))), /*#__PURE__*/_react.default.createElement("button", {
+      }, "Actors: "), movie.Actors.map(function (actor, idx) {
+        return /*#__PURE__*/_react.default.createElement("span", {
+          className: "value"
+        }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+          to: "/actors/".concat(actor)
+        }, idx < move.Actors.length - 1 ? ", " : ""));
+      })), /*#__PURE__*/_react.default.createElement("button", {
         onClick: function onClick() {
           onBackClick(null);
         }
