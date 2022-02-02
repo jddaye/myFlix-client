@@ -41634,7 +41634,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
       }, "Director")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/actors/".concat(movie.Actor)
+        to: "/actors/".concat(movie.Actors)
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
       }, "Actor")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
@@ -41656,10 +41656,11 @@ MovieCard.propTypes = {
       Name: _propTypes.default.string.isRequired,
       Bio: _propTypes.default.string.isRequired
     }),
-    Actor: _propTypes.default.shape({
-      Name: _propTypes.default.string.isRequired,
-      Movie: _propTypes.default.string.isRequired
-    }),
+    // Actors: PropTypes.shape({
+    //     Name: PropTypes.string.isRequired,
+    //     Movie: PropTypes.string.isRequired
+    // }),
+    Actors: _propTypes.default.string.isRequired,
     Genre: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
     ImagePath: _propTypes.default.string.isRequired
@@ -57460,11 +57461,13 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "movie-actors"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Actors: "), /*#__PURE__*/_react.default.createElement("span", {
-        className: "value"
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/actors/".concat(movie.Actor.Name)
-      }, movie.Actor.Name))), /*#__PURE__*/_react.default.createElement("button", {
+      }, "Actors: "), movie.Actors.map(function (actor, idx) {
+        return /*#__PURE__*/_react.default.createElement("span", {
+          className: "value"
+        }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+          to: "/actors/".concat(actor)
+        }, idx < move.Actors.length - 1 ? ", " : ""));
+      })), /*#__PURE__*/_react.default.createElement("button", {
         onClick: function onClick() {
           onBackClick(null);
         }
@@ -57671,7 +57674,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
     value: function getGenre(token) {
       var _this2 = this;
 
-      _axios.default.get("https://myflyx.herokuapp.com/genre/".concat(props.match.params.genre), {
+      _axios.default.get("https://myflyx.herokuapp.com/genre/".concat(props.match.params.genreName), {
         headers: {
           Authorization: "Bearer".concat(token)
         }
@@ -58515,7 +58518,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             md: 8
           }, /*#__PURE__*/_react.default.createElement(_actorView.ActorView, {
             Actor: movies.find(function (m) {
-              return m.Actor.Name === match.params.Name;
+              return m.Actors.Name === match.params.Name;
             }).Actor,
             movies: movies,
             onBackClick: function onBackClick() {

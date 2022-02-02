@@ -28,8 +28,9 @@ export class MovieCard extends React.Component {
                     <Link to={`/directors/${movie.Director.Name}`}>
                         <Button variant="link">Director</Button>
                     </Link>
-
+                    
                     {/* <Link to={`/actors/${movie.Actor}`}>
+
                         <Button variant="link">Actor</Button>
                     </Link> */}
 
@@ -50,10 +51,12 @@ MovieCard.propTypes = {
             Name: PropTypes.string.isRequired,
             Bio: PropTypes.string.isRequired
         }),
-        Actor: PropTypes.shape({
-            Name: PropTypes.string.isRequired,
-            Movie: PropTypes.string.isRequired
-        }),
+        // Actors: PropTypes.shape({
+        //     Name: PropTypes.string.isRequired,
+        //     Movie: PropTypes.string.isRequired
+        // }),
+        Actors: PropTypes.string.isRequired,
+
         Genre: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
         ImagePath: PropTypes.string.isRequired
