@@ -49,7 +49,7 @@ export class GenreView extends React.Component {
                     <Card.Body>
                         <div>
                             <span className="label">Description: </span>
-                            <span className="value">{Genre.Description}</span>
+                            <span className="value">{Genre}</span>
                         </div>
                         
                         <br />
