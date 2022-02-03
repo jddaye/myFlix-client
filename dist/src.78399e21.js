@@ -41634,10 +41634,6 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
       }, "Director")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/actors/".concat(movie.Actor)
-      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
-        variant: "link"
-      }, "Actor")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/genres/".concat(movie.Genre)
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "link"
@@ -41656,11 +41652,7 @@ MovieCard.propTypes = {
       Name: _propTypes.default.string.isRequired,
       Bio: _propTypes.default.string.isRequired
     }),
-    // Actors: PropTypes.shape({
-    //     Name: PropTypes.string.isRequired,
-    //     Movie: PropTypes.string.isRequired
-    // }),
-    Actor: _propTypes.default.string.isRequired,
+    Actors: _propTypes.default.arrayOf(_propTypes.default.string),
     Genre: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
     ImagePath: _propTypes.default.string.isRequired
@@ -58742,7 +58734,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61939" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54905" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
