@@ -57140,7 +57140,7 @@ function RegistrationView(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
 
-    _axios.default.post('http://myflyx.herokuapp.com/users', {
+    _axios.default.post('https://myflyx.herokuapp.com/users', {
       Username: username,
       Password: password,
       Birthday: birthday,
@@ -58734,7 +58734,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54905" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54826" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
